@@ -1,14 +1,21 @@
 SET SERVEROUTPUT ON;
 DECLARE
 
-DOLAR NUMBER(10,2):=45.00;
-VC DOLAR%TYPE;
+V_CARRO number(10,2) := &VLCARRO * 0.8; 
+V_PARCELA number(2) := &NRPARCELA;
+V_PRESTACAO V_CARRO%TYPE;
 
 BEGIN
-
-VC := DOLAR*4.97;
-
-DBMS_OUTPUT.PUT_LINE('VALOR DO DOLAR ATUAL É:'||DOLAR);
-DBMS_OUTPUT.PUT_LINE('VALOR DO DOLAR REAJUSTADO A REAL É:'||VC);
-
+    IF V_PARCELA = 6 THEN
+        V_PRESTACAO := (V_CARRO * 1.1)/V_PARCELA;
+        dbms_output.put_line('Valor da prestação em 6x: '||V_PRESTACAO);
+    ELSIF V_PARCELA = 12 THEN
+        V_PRESTACAO := (V_CARRO * 1.1)/V_PARCELA;
+        dbms_output.put_line('Valor da prestação em 6x: '||V_PRESTACAO);
+    ELSIF V_PARCELA = 18 THEN
+        V_PRESTACAO := (V_CARRO * 1.1)/V_PARCELA;
+        dbms_output.put_line('Valor da prestação em 6x: '||V_PRESTACAO);
+    ELSE 
+        dbms_output.put_line('Fora do Contrato');
+    END IF;
 END;
